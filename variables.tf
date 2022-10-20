@@ -45,9 +45,6 @@ variable "psql_db_names" {
   type        = list(string)
 }
 
-variable "subnet_id" {
-  type = string
-}
 
 variable "placement" {
   description = "Set zone and network"
@@ -175,3 +172,21 @@ variable "permission" {
   default     = null
   description = "User permissions"
 }
+
+
+variable "yc_token" {
+  type        = string
+  description = "Yandex Cloud API key"
+}
+
+variable "yc_cloud_id" {
+  type        = string
+  description = "Yandex Cloud id"
+}
+
+variable "yc_folder_id" {
+  type        = string
+  description = "Yandex Cloud folder id"
+}
+
+
