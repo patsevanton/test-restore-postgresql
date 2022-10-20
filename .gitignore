@@ -1,0 +1,7 @@
+# IDE JetBrains
+.idea/
+.idea_modules/
+
+#Terraform
+terraform.tfstate*
+.terraform/
