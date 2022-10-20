@@ -54,7 +54,8 @@ resource "yandex_mdb_postgresql_cluster" "postgres" {
 }
 
 resource "yandex_mdb_postgresql_user" "pg_user" {
-  cluster_id = var.backup_id != null ? yandex_mdb_postgresql_cluster.postgres.id : null
+  count      = var.backup_id == null ? 1 : 0
+  cluster_id = yandex_mdb_postgresql_cluster.postgres.id
   name       = var.psql_user
   password   = var.psql_password
   conn_limit = var.connection_limit
@@ -64,10 +65,10 @@ resource "yandex_mdb_postgresql_user" "pg_user" {
 
 
 resource "yandex_mdb_postgresql_database" "pg" {
-  for_each   = var.backup_id != null ? toset(var.psql_db_names) : null
+  for_each   = var.backup_id == null ? { for db in var.psql_db_names : db => db } : {}
   cluster_id = yandex_mdb_postgresql_cluster.postgres.id
   name       = each.key
-  owner      = yandex_mdb_postgresql_user.pg_user.name
+  owner      = yandex_mdb_postgresql_user.pg_user[0].name
   lc_collate = "ru_RU.UTF-8"
   lc_type    = "ru_RU.UTF-8"
 
