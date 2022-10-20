@@ -45,8 +45,9 @@ resource "yandex_mdb_postgresql_cluster" "postgres" {
       subnet = s.subnet
     }]
     content {
-      zone      = host.value.zone
-      subnet_id = host.value.subnet
+      zone             = host.value.zone
+      subnet_id        = host.value.subnet
+      assign_public_ip = true
     }
   }
 

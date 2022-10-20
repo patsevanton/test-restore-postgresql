@@ -127,7 +127,6 @@ variable "psql_user" {
 
 variable "psql_password" {
   type        = string
-  default     = "password"
 }
 
 variable "security_group_ids" {
