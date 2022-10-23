@@ -13,9 +13,10 @@ resource "yandex_mdb_postgresql_cluster" "test" {
   }
 
   host {
-    zone      = "ru-central1-b"
-    subnet_id = "e2l6251f60t5e6faq3o7"
-#    assign_public_ip = true
+    zone             = "ru-central1-b"
+    name             = "test"
+    subnet_id        = "e2l6251f60t5e6faq3o7"
+    assign_public_ip = false
   }
 }
 
