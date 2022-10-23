@@ -13,20 +13,19 @@ resource "yandex_mdb_postgresql_cluster" "test" {
   }
 
   host {
-    zone             = "ru-central1-b"
-    subnet_id        = "e2l6251f60t5e6faq3o7"
-    assign_public_ip = true
+    zone      = "ru-central1-b"
+    subnet_id = "e2l6251f60t5e6faq3o7"
+#    assign_public_ip = true
   }
-
-#  restore {
-#    backup_id = "c9qjpcbe450ado5hbdrm:c9qv88lt6hhu44h7dc0p"
-#  }
 }
 
 resource "yandex_mdb_postgresql_database" "test" {
   cluster_id = yandex_mdb_postgresql_cluster.test.id
   name       = "test"
   owner      = "test"
+  depends_on = [
+    yandex_mdb_postgresql_user.test
+  ]
 }
 
 resource "yandex_mdb_postgresql_user" "test" {

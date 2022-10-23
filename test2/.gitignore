@@ -1,0 +1,10 @@
+# IDE JetBrains
+.idea/
+.idea_modules/
+
+#Terraform
+terraform.tfstate*
+.terraform/
+/private.auto.tfvars
+/.terraform.lock.hcl
+/.terraform.tfstate.lock.info
