@@ -19,6 +19,6 @@ resource "yandex_mdb_postgresql_cluster" "test3" {
   }
 
   restore {
-    backup_id = "c9q98l1c157oobcpvln9:c9qr97e0eust80v20o7f"
+    backup_id = "c9q938sdlf83kuqv467k:c9qqhlqs7ml2kgg13bci"
   }
 }
